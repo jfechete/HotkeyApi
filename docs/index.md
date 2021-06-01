@@ -6,7 +6,7 @@ Returns a random hotkey from the list
 {
   "Program":Program used in,
   "Category":What category the hotkey belongs to,
-  "Shortcut":String of keys to pressed, seperated by "+",
+  "Shortcut":String of keys to be pressed, seperated by "+",
   "Action":Description of what the hotkey does,
 }
 ```
@@ -19,10 +19,10 @@ url/
 Response:
 ```
 {
-  "Action":"Lock a field.",
-  "Category":"Fields",
   "Program":"Word",
+  "Category":"Fields",
   "Shortcut":"Ctrl+F11"
+  "Action":"Lock a field.",
 }
 ```
 
