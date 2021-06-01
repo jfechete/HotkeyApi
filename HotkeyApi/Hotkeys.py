@@ -9,11 +9,13 @@ hotkeys = []
 categories = {}
 keys = []
 
+#init method
 def init():
     retrieve_hotkeys()
     retrieve_categories()
     retrieve_keys()
 
+#api methods
 def get_random_hotkey():
     return choice(hotkeys)
 
@@ -37,7 +39,7 @@ def get_hotkeys_from_keys(keys_passed):
     key_string = KEY_SEPERATOR.join(keys_passed)
     hotkeys_returning = []
     for hotkey in hotkeys:
-        if hotkey[fields[2]].startswith(key_string):
+        if hotkey[fields[2]].startswith(key_string+KEY_SEPERATOR) or key_string == hotkey[fields[2]]:
             hotkeys_returning.append(hotkey)
 
     return hotkeys_returning
@@ -51,6 +53,7 @@ def get_categories(program):
         raise ValueError("Unknown program")
     return categories[program]
 
+#helper methods
 def retrieve_hotkeys():
     global fields
     with open(DATA_FILE,"r",encoding="utf-8") as data_file:
@@ -72,11 +75,12 @@ def retrieve_categories():
             categories[hotkey[program_key]].append(hotkey[category_key])
 
 def retrieve_keys():
-    print(len(hotkeys))
     for hotkey in hotkeys:
         current_keys = hotkey[fields[2]].split(KEY_SEPERATOR)
         for key in current_keys:
             if key not in keys:
                 keys.append(key)
+    print(keys)
 
+#call init
 init()

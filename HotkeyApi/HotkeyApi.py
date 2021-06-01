@@ -2,6 +2,7 @@
 from flask import Flask, request, jsonify, Response
 import Hotkeys
 
+#setup
 PROGRAM_ARGUMENT = "program"
 CATEGORY_ARGUMENT = "category"
 KEYS_ARGUMENT = "keys"
@@ -10,6 +11,7 @@ LIST_SEPERATOR = ","
 app = Flask(__name__)
 
 
+#connect api to methods
 @app.route("/")
 def home():
 	return jsonify(Hotkeys.get_random_hotkey())
@@ -54,5 +56,6 @@ def add():
 	args = request.args.to_dict()
 	return jsonify({"value": float(args["num1"])+float(args["num2"])})
 
+#run api
 if __name__ == "__main__":
 	app.run(host='0.0.0.0',port=8080)
