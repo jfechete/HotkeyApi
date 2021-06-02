@@ -10,3 +10,5 @@ I also plan on making a program with a GUI that connects to this API to help dis
 I took the hotkeys from these websites and reformatted a lot of it:
 https://www.rd.com/article/windows-10-keyboard-shortcuts/
 https://support.microsoft.com/en-us/topic/keyboard-shortcuts-in-office-e765366f-24fc-4054-870d-39b214f223fd
+
+Docs: https://jfechete.github.io/HotkeyApi/
