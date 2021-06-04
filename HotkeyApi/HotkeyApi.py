@@ -22,13 +22,18 @@ def all_hotkeys():
 		return Response("Failed to provide a \"{}\" argument".format(PROGRAM_ARGUMENT),400)
 	if CATEGORY_ARGUMENT not in args:
 		return Response("Failed to provide a \"{}\" argument".format(CATEGORY_ARGUMENT),400)
-	return jsonify(Hotkeys.get_all_hotkeys_for_category(args[PROGRAM_ARGUMENT],args[CATEGORY_ARGUMENT]))
+
+	try:
+		return jsonify(Hotkeys.get_all_hotkeys_for_category(args[PROGRAM_ARGUMENT],args[CATEGORY_ARGUMENT]))
+	except ValueError as e:
+		return (str(e),400)
 
 @app.route("/categories")
 def program_categories():
 	args = request.args.to_dict()
 	if PROGRAM_ARGUMENT not in args:
 		return Response("Failed to provide a \"{}\" argument".format(PROGRAM_ARGUMENT),400)
+
 	try:
 		return jsonify(Hotkeys.get_categories(args[PROGRAM_ARGUMENT]))
 	except ValueError as e:
@@ -49,11 +54,6 @@ def hotkeys_by_keys():
 @app.route("/programs")
 def all_programs():
 	return jsonify(Hotkeys.get_all_programs())
-
-@app.route("/params/test", methods=["GET"])
-def add():
-	args = request.args.to_dict()
-	return jsonify({"value": float(args["num1"])+float(args["num2"])})
 
 #run api
 if __name__ == "__main__":
