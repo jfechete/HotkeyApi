@@ -80,7 +80,6 @@ def retrieve_keys():
         for key in current_keys:
             if key not in keys:
                 keys.append(key)
-    print(keys)
 
 #call init
 init()
